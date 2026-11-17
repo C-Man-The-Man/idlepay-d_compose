@@ -1,0 +1,14 @@
+services:
+  idlepay:
+    image: ghcr.io/idlepay/idlepay:latest
+    container_name: idlepay
+    hostname: ${IDLEPAY_HOSTNAME:-CHOOSE_A_NAME}
+    restart: always
+    environment:
+      IDLEPAY_KEY: ${IDLEPAY_KEY:?Set IDLEPAY_KEY in .env}
+    volumes:
+      - idlepay:/etc/idlepay
+
+volumes:
+  idlepay:
+    name: idlepay-data
